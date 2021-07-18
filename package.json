@@ -1,7 +1,7 @@
 {
   "name": "social-sharing-app",
   "version": "1.0.0",
-  "description": "## User Story * AS A social media startup * I WANT an API for my social network that uses a NoSQL database * SO THAT my website can handle large amounts of unstructured data",
+  "description": "Social media sharing app",
   "main": "server.js",
   "dependencies": {
     "express": "^4.17.1",

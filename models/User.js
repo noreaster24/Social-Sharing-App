@@ -13,20 +13,31 @@ const UserSchema = new Schema({
         unique: true,
         match: [/.+@.+\..+/]
     },
-    thoughts: {// array of _id values referencing the Though model
+    thoughts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Thought'
+        }
+    ],
+    friends: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ]
+},
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false
+    }
+);
 
-    },
-    friends: { // array of _id values referencing User model (self referencing)
-
-    },
-    // toJSON: {
-    //     virtuals: true,
-    //     getters: true
-    // },
-    id: false
+// get the total length of User's friends
+UserSchema.virtual('friendCount').get(function () {
+    return this.friends.length
 });
-
-
 
 const User = model('User', UserSchema);
 
